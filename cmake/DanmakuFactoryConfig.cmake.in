@@ -1,0 +1,21 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+# Find PCRE2 dependency
+find_package(PkgConfig QUIET)
+if(PkgConfig_FOUND)
+    pkg_check_modules(PCRE2 QUIET libpcre2-8)
+endif()
+
+if(NOT PCRE2_FOUND)
+    find_path(PCRE2_INCLUDE_DIRS pcre2.h)
+    find_library(PCRE2_LIBRARIES NAMES pcre2-8 pcre2-8-static)
+    if(PCRE2_INCLUDE_DIRS AND PCRE2_LIBRARIES)
+        set(PCRE2_FOUND TRUE)
+    endif()
+endif()
+
+include("${CMAKE_CURRENT_LIST_DIR}/DanmakuFactoryTargets.cmake")
+
+check_required_components(DanmakuFactory)
