@@ -115,7 +115,7 @@ if(DANMAKU_BUILD_STATIC)
     add_library(DanmakuFactory_static STATIC ${DANMAKU_LIB_SOURCES})
     configure_danmaku_target(DanmakuFactory_static)
     set_target_properties(DanmakuFactory_static PROPERTIES
-        OUTPUT_NAME DanmakuFactory
+        OUTPUT_NAME danmaku
         ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     )
     add_library(DanmakuFactory::static ALIAS DanmakuFactory_static)
@@ -126,7 +126,7 @@ if(DANMAKU_BUILD_SHARED)
     add_library(DanmakuFactory_shared SHARED ${DANMAKU_LIB_SOURCES})
     configure_danmaku_target(DanmakuFactory_shared)
     set_target_properties(DanmakuFactory_shared PROPERTIES
-        OUTPUT_NAME DanmakuFactory
+        OUTPUT_NAME danmaku
         LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     )
     add_library(DanmakuFactory::shared ALIAS DanmakuFactory_shared)
@@ -140,7 +140,7 @@ if(DANMAKU_BUILD_FRAMEWORK AND APPLE)
         FRAMEWORK TRUE
         FRAMEWORK_VERSION A
         MACOSX_FRAMEWORK_IDENTIFIER org.tikm.DanmakuFactory
-        OUTPUT_NAME DanmakuFactory
+        OUTPUT_NAME danmaku
         XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ""
         XCODE_ATTRIBUTE_INSTALL_PATH "@rpath"
     )
@@ -163,7 +163,7 @@ if(DANMAKU_BUILD_CLI)
         target_link_libraries(DanmakuFactoryCLI PRIVATE DanmakuFactory_shared ${PCRE2_LIBRARIES})
     endif()
     set_target_properties(DanmakuFactoryCLI PROPERTIES
-        OUTPUT_NAME DanmakuFactory
+        OUTPUT_NAME danmaku
         RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     )
 endif()
