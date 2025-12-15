@@ -90,15 +90,18 @@ function(configure_danmaku_target target)
         PRIVATE
             ${PCRE2_INCLUDE_DIRS}
     )
+    if(PCRE2_LIBRARY_DIRS)
+        target_link_directories(${target} PRIVATE ${PCRE2_LIBRARY_DIRS})
+    endif()
     target_link_libraries(${target} PRIVATE ${PCRE2_LIBRARIES})
-    
+
     # Platform-specific settings
     if(APPLE)
         target_compile_definitions(${target} PRIVATE __APPLE__)
     elseif(WIN32)
         target_compile_definitions(${target} PRIVATE _WIN32)
     endif()
-    
+
     # Set public headers for framework builds
     set_target_properties(${target} PROPERTIES
         PUBLIC_HEADER "${DANMAKU_PUBLIC_HEADERS}"
@@ -151,6 +154,9 @@ if(DANMAKU_BUILD_CLI)
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${PCRE2_INCLUDE_DIRS}
     )
+    if(PCRE2_LIBRARY_DIRS)
+        target_link_directories(DanmakuFactoryCLI PRIVATE ${PCRE2_LIBRARY_DIRS})
+    endif()
     if(TARGET DanmakuFactory_static)
         target_link_libraries(DanmakuFactoryCLI PRIVATE DanmakuFactory_static ${PCRE2_LIBRARIES})
     else()
