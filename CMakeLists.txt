@@ -64,14 +64,15 @@ set(DANMAKU_LIB_SOURCES
 )
 
 # Public headers (exposed to users of the library)
+# These are the clean public API headers with proper include paths for framework usage
 set(DANMAKU_PUBLIC_HEADERS
-    src/CDanmakuFactory.h
-    src/Define/DanmakuDef.h
-    src/Define/Status.h
-    src/Config/Config.h
-    src/List/DanmakuFactoryList.h
-    src/AssFile/AssFile.h
-    src/String/DanmakuFactoryString.h
+    include/DanmakuFactory/DanmakuFactory.h
+    include/DanmakuFactory/DanmakuDef.h
+    include/DanmakuFactory/Status.h
+    include/DanmakuFactory/Config.h
+    include/DanmakuFactory/DanmakuFactoryList.h
+    include/DanmakuFactory/AssFile.h
+    include/DanmakuFactory/DanmakuFactoryString.h
 )
 
 # Private headers
@@ -85,6 +86,7 @@ set(DANMAKU_PRIVATE_HEADERS
 function(configure_danmaku_target target)
     target_include_directories(${target}
         PUBLIC
+            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/DanmakuFactory>
             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
             $<INSTALL_INTERFACE:include/DanmakuFactory>
         PRIVATE
