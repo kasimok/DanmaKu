@@ -24,12 +24,12 @@
 #ifndef __CONFIG_H__
 #define __CONFIG_H__
 
+#include "Define/DanmakuDef.h"
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
-#include "../Define/DanmakuDef.h"
 
 #define SIZE_OF_BUF 4096
 #define KEY_LEN 128

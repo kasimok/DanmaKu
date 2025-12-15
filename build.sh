@@ -77,12 +77,15 @@ create_xcframework() {
     OUTPUT_DIR="${BUILD_DIR}/xcframework"
     mkdir -p "${OUTPUT_DIR}"
     
-    # Create XCFramework from static libraries
+    # Remove existing xcframework if present
+    rm -rf "${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework"
+    
+    # Create XCFramework from static libraries with public headers
     xcodebuild -create-xcframework \
-        -library "${BUILD_DIR}/ios-device/lib/libDanmakuFactory.a" \
-        -headers "${SCRIPT_DIR}/src" \
-        -library "${BUILD_DIR}/ios-simulator/lib/libDanmakuFactory.a" \
-        -headers "${SCRIPT_DIR}/src" \
+        -library "${BUILD_DIR}/ios-device/lib/${BUILD_TYPE}/libdanmaku.a" \
+        -headers "${SCRIPT_DIR}/include/DanmakuFactory" \
+        -library "${BUILD_DIR}/ios-simulator/lib/${BUILD_TYPE}/libdanmaku.a" \
+        -headers "${SCRIPT_DIR}/include/DanmakuFactory" \
         -output "${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework"
     
     echo ">>> XCFramework created: ${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework"

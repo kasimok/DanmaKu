@@ -24,12 +24,12 @@
 #ifndef __STATUS_H__
 #define __STATUS_H__
 
+#include "Define/DanmakuDef.h"
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
-#include "DanmakuDef.h"
 
     struct SingleTaskStatus
     {

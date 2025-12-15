@@ -24,12 +24,16 @@
 #ifndef __ASS_STRING_PROCESSING_H__
 #define __ASS_STRING_PROCESSING_H__
 
+#include "Define/DanmakuDef.h"
+#include "String/DanmakuFactoryString.h"
+#include <stddef.h>
+#include <stdlib.h>
+#include <string.h>
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
-#include "../CDanmakuFactory.h"
 
 // TODO: sc框文本宽度补偿值 有准确测长方法请移除
 #define SCBOX_TXT_LEN_COMPENSATION 1.2

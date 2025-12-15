@@ -24,13 +24,21 @@
 #ifndef __ASSFILE_H__
 #define __ASSFILE_H__
 
+#include "Config/Config.h"
+#include "Define/DanmakuDef.h"
+#include "Define/Status.h"
+#include "List/DanmakuFactoryList.h"
+#include "String/DanmakuFactoryString.h"
+#include "AssFile/AssStringProcessing.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
-#include "../CDanmakuFactory.h"
-#include "AssStringProcessing.h"
 
 #define ASS_MAX_LINE_LEN 4096
 #define ASS_TITLE_LEN 128

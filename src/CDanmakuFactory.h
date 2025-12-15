@@ -24,23 +24,22 @@
 #ifndef __C_DANMAKU_FACTORY_H__
 #define __C_DANMAKU_FACTORY_H__
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include "Config/Config.h"
 #include "Define/DanmakuDef.h"
 #include "Define/Status.h"
 #include "List/DanmakuFactoryList.h"
 #include "String/DanmakuFactoryString.h"
+#include "AssFile/AssFile.h"
+#include "TemplateFile/TemplateFile.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "AssFile/AssFile.h"
-#include "TemplateFile/TemplateFile.h"
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
     /* xml */
     extern int readXml(const char *const ipFile, DANMAKU **head, const char *mode, const float timeShift,
